@@ -1,9 +1,12 @@
+import React, { useState, useEffect } from 'react';
 
 export default function QuestionList() {
 
     const [questions, setQuestions] = useState([]);
 
-    const URL = 'http://localhost:8080/polls/1/questions';
+    const URL = 'http://localhost:8080/polls/2/questions';
+
+    useEffect(() => {showQuestions()}, [])
 
     const showQuestions = () => {
         fetch(URL)
@@ -18,7 +21,7 @@ export default function QuestionList() {
     return (
         <div>
             <h1>Questions</h1>
-            <p></p>
+            <p>{questions.content}</p>
         </div>
     )
     
