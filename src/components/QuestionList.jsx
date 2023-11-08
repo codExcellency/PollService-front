@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function QuestionList() {
 
     const [questions, setQuestions] = useState([]);
 
-    const URL = 'http://localhost:8080/polls/2/questions';
+    const URL = 'http://localhost:8080/polls/2';
 
-    useEffect(() => {showQuestions()}, [])
+    useEffect(() => { showQuestions() }, [])
 
     const showQuestions = () => {
         fetch(URL)
@@ -18,11 +18,19 @@ export default function QuestionList() {
             .catch(err => console.error(err))
     }
 
+
+
     return (
         <div>
-            <h1>Questions</h1>
-            <p>{questions.content}</p>
+            <h1>{questions.name}</h1>
+            <h3>{questions.description}</h3>
+            <h5>List of questions:</h5>
+            {questions.map((question) => (
+                <li key={question.questionId}>
+                    <p>{question.questions}</p>
+
+                </li>
+            ))}
         </div>
     )
-    
 }
