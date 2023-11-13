@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
-export default function QuestionList() {
+export default function QuestionListV7() {
 
-    const [questions, setQuestions] = useState([]);
+    const [questions, setQuestions] = useState({ name: '', description: '', questions: [] });
 
-    const URL = 'http://localhost:8080/polls/2';
+    const URL = 'http://localhost:8080/polls/3';
 
     useEffect(() => { showQuestions() }, [])
 
@@ -23,12 +23,11 @@ export default function QuestionList() {
     return (
         <div>
             <h1>{questions.name}</h1>
-            <h3>{questions.description}</h3>
-            <h5>List of questions:</h5>
-            {questions.map((question) => (
+            <h4>{questions.description}</h4>
+            <p>Questions:</p>
+            {questions.questions.map((question) => (
                 <li key={question.questionId}>
-                    <p>{question.questions}</p>
-
+                    <p>{question.content}</p>
                 </li>
             ))}
         </div>

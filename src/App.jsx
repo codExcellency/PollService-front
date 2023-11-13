@@ -1,12 +1,12 @@
 import './App.css'
-import QuestionList from './components/QuestionList'
+import QuestionList from './components/QuestionListV7'
 
 function App() {
-  
+
 
   return (
     <>
-      <QuestionList/>
+      <QuestionList />
     </>
   )
 }
