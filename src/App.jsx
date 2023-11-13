@@ -1,5 +1,5 @@
 import './App.css'
-import QuestionList from './components/QuestionListV7'
+import QuestionList from './components/QuestionList'
 
 function App() {
 

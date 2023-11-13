@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function QuestionListV7() {
+export default function QuestionList() {
 
     const [questions, setQuestions] = useState({ name: '', description: '', questions: [] });
 
@@ -25,10 +25,10 @@ export default function QuestionListV7() {
             <h1>{questions.name}</h1>
             <h4>{questions.description}</h4>
             <p>Questions:</p>
-            {questions.questions.map((question) => (
-                <li key={question.questionId}>
-                    <p>{question.content}</p>
-                </li>
+            {questions.questions.map((question, index) => (
+                <ul key={question.questionId}>
+                    <p>{index + 1}. {question.content}</p>
+                </ul>
             ))}
         </div>
     )
