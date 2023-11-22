@@ -12,10 +12,11 @@ export default function QuestionList() {
 
     const URL = 'http://localhost:8080/polls/3';
 
+
+    // Show questions on page load
     useEffect(() => { showQuestions() }, []);
 
-    let myRef = {};
-
+    // Fetch poll data from database
     const showQuestions = () => {
         fetch(URL)
             .then(response => response.json())
@@ -27,6 +28,9 @@ export default function QuestionList() {
             .catch(err => console.error(err));
     }
 
+    // Save answer to database
+    // Check if answer is empty
+    // If not empty, save answer to database
     const saveAnswer = () => {
         if (myRef.current.value === '') {
             return;
@@ -44,6 +48,9 @@ export default function QuestionList() {
         }
     };
 
+    // Handle next button
+    // Check if answer is empty
+    // If not empty, go to next question
     const handleNext = () => {
         if (myRef.current.value === '') {
             alert('Please fill in the answer field!');
@@ -57,19 +64,19 @@ export default function QuestionList() {
     return (
 
         <div>
-            {isFInished ? (
+            {isFInished ? (             // Show thank you message when poll is finished   
                 <div>
                     <h1>Thank you for your answers!</h1>
                     <p style={{ fontSize: "24px" }} > You can close the poll now.</p>
                 </div>
             ) : (
                 <div>
-                    {!isClicked ? (
+                    {!isClicked ? (     // Show poll name and description when start button is not clicked 
                         <div>
                             <h1>{poll.name}</h1>
                             <p style={{ fontSize: "24px" }}>{poll.description}</p>
                             <button onClick={() => setIsClicked(true)}>Start</button>
-                        </div>) : (
+                        </div>) : (     // Show questions when start button is clicked
                         <div>
                             <h1>{poll.name}</h1>
                             {questions.length > 0 && (
@@ -77,7 +84,6 @@ export default function QuestionList() {
                                     <p style={{ fontSize: "24px" }}>{questions[currentQuestion].content}</p>
                                     <TextField
                                         required
-                                        inputRef={myRef}
                                         margin="dense"
                                         label="Answer"
                                         fullWidth
