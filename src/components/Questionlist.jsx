@@ -16,6 +16,8 @@ export default function QuestionList() {
     // Show questions on page load
     useEffect(() => { showQuestions() }, []);
 
+    let myRef = {};
+
     // Fetch poll data from database
     const showQuestions = () => {
         fetch(URL)
