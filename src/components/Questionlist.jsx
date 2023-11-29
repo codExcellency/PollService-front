@@ -86,6 +86,7 @@ export default function QuestionList() {
                                     <p style={{ fontSize: "24px" }}>{questions[currentQuestion].content}</p>
                                     <TextField
                                         required
+                                        inputRef={myRef}
                                         margin="dense"
                                         label="Answer"
                                         fullWidth
