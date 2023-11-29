@@ -24,18 +24,17 @@ export default function AnswersReport() {
         <div>
             <h1>{poll.name}</h1>
             <p style={{ fontSize: "24px" }}>{poll.description}</p>
-            {questions.length > 0 && (
-                <div>
-                    {questions.map((question, questionIndex) => (
-                        <div key={questionIndex}>
-                            <p style={{ fontSize: "24px", fontWeight: "bold" }}>{question.content}</p>
-                            {question.answers.map((answer, answerIndex) => (
-                                <p key={answerIndex}>{answer.content}</p>
-                            ))}
-                        </div>
-                    ))}
-                </div>
-            )}
+
+            <div>
+                {questions.map((question, questionIndex) => (
+                    <div key={questionIndex}>
+                        <p style={{ fontSize: "24px", fontWeight: "bold" }}>{question.content}</p>
+                        {question.answers.map((answer, answerIndex) => (
+                            <p key={answerIndex}>{answer.content}</p>
+                        ))}
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
