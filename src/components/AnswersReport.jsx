@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import '../App.css'
 
 export default function AnswersReport() {
 
@@ -21,7 +22,7 @@ export default function AnswersReport() {
     }
 
     return (
-        <div>
+        <div id="Answers">
             <h1>{poll.name}</h1>
             <p style={{ fontSize: "24px" }}>{poll.description}</p>
 

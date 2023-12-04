@@ -1,9 +1,9 @@
-import { AppBar, Tab, Tabs, Typography } from '@mui/material'
+import { AppBar, Tab, Tabs, ThemeProvider, Typography, createTheme } from '@mui/material'
 import './App.css'
 
 import { useState } from 'react';
 import AnswersReport from './components/AnswersReport';
-import QuestionList from './components/QuestionList';
+import QuestionList from './components/Questionlist';
 
 function App() {
 
@@ -13,18 +13,31 @@ function App() {
     setValue(value);
   }
 
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#0079C2',
+      },
+      secondary: {
+        main: '#FFFFFF',
+      },
+    },
+  })
+
 
   return (
     <>
       <div>
-        <AppBar>
-          <Typography variant='h4' align='center'>
-            <Tabs value={value} onChange={handleChange}>
-              <Tab value='Questions' label='Questions' />
-              <Tab value='Answers' label='Answers' />
-            </Tabs>
-          </Typography>
-        </AppBar>
+        <ThemeProvider theme={theme}>
+          <AppBar>
+            <Typography variant='h4' align='center'>
+              <Tabs textColor='inherit' indicatorColor='secondary' value={value} onChange={handleChange}>
+                <Tab value='Questions' label='Questions' />
+                <Tab value='Answers' label='Answers' />
+              </Tabs>
+            </Typography>
+          </AppBar>
+        </ThemeProvider>
         {value === 'Questions' && <QuestionList />}
         {value === 'Answers' && <AnswersReport />}
       </div>

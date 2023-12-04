@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { TextField } from "@mui/material";
+import { TextField, Button } from "@mui/material";
+import '../App.css'
 
 export default function QuestionList() {
 
@@ -65,24 +66,24 @@ export default function QuestionList() {
 
     return (
 
-        <div>
+        <div id="Poll">
             {isFInished ? (             // Show thank you message when poll is finished   
-                <div>
+                <div id="Thanks">
                     <h1>Thank you for your answers!</h1>
                     <p style={{ fontSize: "24px" }} > You can close the poll now.</p>
                 </div>
             ) : (
                 <div>
                     {!isClicked ? (     // Show poll name and description when start button is not clicked 
-                        <div>
+                        <div id="Start">
                             <h1>{poll.name}</h1>
                             <p style={{ fontSize: "24px" }}>{poll.description}</p>
-                            <button onClick={() => setIsClicked(true)}>Start</button>
+                            <Button variant="contained" color="primary" onClick={() => setIsClicked(true)}>Start</Button>
                         </div>) : (     // Show questions when start button is clicked
                         <div>
                             <h1>{poll.name}</h1>
                             {questions.length > 0 && (
-                                <div>
+                                <div id="Qs">
                                     <p style={{ fontSize: "24px" }}>{questions[currentQuestion].content}</p>
                                     <TextField
                                         required
@@ -98,8 +99,8 @@ export default function QuestionList() {
                                         onChange={e => setAnswer({ ...answer, content: e.target.value.trimStart(), question: questions[currentQuestion] })}
                                     /><br />
                                     {currentQuestion < questions.length - 1 ? (
-                                        <button onClick={() => { handleNext(); saveAnswer(); }}>Next</button>
-                                    ) : <button onClick={() => { saveAnswer(); setIsFinished(true); }}>Finish</button>}
+                                        <Button variant="contained" color="primary" onClick={() => { handleNext(); saveAnswer(); }}>Next</Button>
+                                    ) : <Button variant="contained" color="primary" onClick={() => { saveAnswer(); setIsFinished(true); }}>Finish</Button>}
                                 </div>
                             )}
                         </div>
