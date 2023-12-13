@@ -11,7 +11,8 @@ export default function QuestionList() {
     const [isClicked, setIsClicked] = useState(false);
     const [isFInished, setIsFinished] = useState(false);
 
-    const URL = 'http://localhost:8080/polls/3';
+    // const URL = 'http://localhost:8080/polls/3';
+    const URL = 'https://pollservice-back.onrender.com/polls/3';
 
 
     // Show questions on page load
@@ -38,7 +39,7 @@ export default function QuestionList() {
         if (myRef.current.value === '') {
             return;
         } else {
-            fetch('http://localhost:8080/answers', {
+            fetch('https://pollservice-back.onrender.com/answers', {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify(answer)

@@ -8,7 +8,8 @@ export default function AnswersReport() {
 
     useEffect(() => { showQuestions() }, []);
 
-    const URL = 'http://localhost:8080/polls/3';
+    // const URL = 'http://localhost:8080/polls/3';
+    const URL = 'https://pollservice-back.onrender.com/polls/3';
 
     const showQuestions = () => {
         fetch(URL)
